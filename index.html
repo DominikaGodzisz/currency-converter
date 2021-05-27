@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantor walut</title>
+    <meta property="og:image" content="images/share.png">
+    <link rel="icon" href="images/icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <script defer src="js/script.js"></script>
+</head>
+
+<!-- komentarz -->
+
+
+<body class="body">
+    <main>
+        <form class="form js-form">
+            <p>
+            <h1 class=form__header>Przelicznik walut</h1>
+            </p>
+            <fieldset class="form__fieldset" name="inputcurrency">
+                <legend class="form__legend">Z jakiej waluty przeliczasz?></legend>
+                <label>
+                    Wybierz walutę:
+                    <p>
+                        <select class="form__field js-inCurrency" name="inCurrency">
+                            <option value="PLN">PLN - Polski złoty [zł]</option>
+                            <option value="USD">USD - Dolar amerykański [$]</option>
+                            <option value="EUR">EUR - Euro [&euro;]</option>
+                            <option value="GBP">GBP - Funt brytyjski [&pound;] </option>
+                        </select>
+                    </p>
+                </label>
+                <p>
+                    <label>
+                        Wpisz kwotę <span class="form--smallFont">(maksymalnie 2 cyfry po
+                            przecinku)</span>:
+                        <p><input class="form__field js-inValue" type="number" step="0.01" min="0.01" name="inValue"
+                                required></p>
+                    </label>
+                </p>
+
+            </fieldset>
+            <fieldset class="form__fieldset" name="outputcurrency">
+                <legend class="form__legend">W jakiej walucie chcesz otrzymać wynik?></legend>
+                <label>
+                    Wybierz walutę:
+                    <p>
+                        <select class="form__field js-outCurrency" name="outCurrency">
+                            <option value="USD">USD - Dolar amerykański [$]</option>
+                            <option value="EUR">EUR - Euro [&euro;]</option>
+                            <option value="GBP">GBP - Funt brytyjski [&pound;] </option>
+                            <option value="PLN">PLN - Polski złoty [zł]</option>
+                        </select>
+                    </p>
+                </label>
+
+            </fieldset>
+            <p>
+                <button class="form__button" type="submit">Przelicz</button>
+            </p>
+            <fieldset class="form__fieldset">
+                <p> Wynik : <strong class="js-outValue"> </strong></p>
+            </fieldset>
+
+            <p>
+                <button class="form__button form__button--reset" type="reset">Wyczyść</button>
+            </p>
+
+
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>Dominika Godzisz</p>
+    </footer>
+
+</body>
+
+</html>
