@@ -10,16 +10,17 @@ html {
     font-family: 'Merriweather', serif;
     font-size: 16px;
     line-height: 1.5;
-    background-color: #04613a;
+    background-color: rgb(58, 68, 58);
     max-width: 1200px;
     width:100%;
     margin: 0px auto;
     text-align: left;
     padding: 10px;
     color: #eee;
-    background-image: url(../images/background1.png);
-    background-position: top left;
-    background-repeat: repeat;
+    background-image: url(../images/background2.png);
+    background-position: center;
+    background-repeat: repeat-y;
     background-attachment: local;
     overflow: auto;
+   
 }
