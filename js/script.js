@@ -15,7 +15,7 @@ formElement.addEventListener("submit", (event) => {
     let amount = Number(inValue.value);
 
     if (inCurrency.value === outCurrency.value) {
-        outValue.innerText = "Wybierz inną walutę";
+        outValue.innerText = "Waluta wejściowa i wyjściowa jest taka sama";
     }
 
     else {

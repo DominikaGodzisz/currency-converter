@@ -12,10 +12,14 @@ html {
     line-height: 1.5;
     background-color: #04613a;
     max-width: 1200px;
-    width:1000%;
+    width:100%;
     margin: 0px auto;
     text-align: left;
     padding: 10px;
     color: #eee;
-
+    background-image: url(../images/background1.png);
+    background-position: top left;
+    background-repeat: repeat;
+    background-attachment: local;
+    overflow: auto;
 }
