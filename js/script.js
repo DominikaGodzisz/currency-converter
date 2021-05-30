@@ -1,64 +1,91 @@
-let formElement = document.querySelector(".js-form");
-let inCurrency = document.querySelector(".js-inCurrency");
-let inValue = document.querySelector(".js-inValue");
-let outCurrency = document.querySelector(".js-outCurrency");
-let outValue = document.querySelector(".js-outValue");
+{
+    const inCurrency = document.querySelector(".js-inCurrency");
+    const inValue = document.querySelector(".js-inValue");
+    const outCurrency = document.querySelector(".js-outCurrency");
+    const outValue = document.querySelector(".js-outValue");
 
+    const eurRate = 4.47;
+    const usdRate = 3.65;
+    const gbpRate = 5.18;
 
-let eurRate = 4.47;
-let usdRate = 3.65;
-let gbpRate = 5.18;
-
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    let amount = Number(inValue.value);
-
-    if (inCurrency.value === outCurrency.value) {
-        outValue.innerText = "Waluta wejściowa i wyjściowa jest taka sama";
-    }
-
-    else {
-
-        switch (inCurrency.value) {
-            case "USD":
-                product = amount * usdRate;
-                break;
-            case "EUR":
-                product = amount * eurRate;
-                break;
-            case "GBP":
-                product = amount * gbpRate;
-                break;
-            default:
-                product = amount;
-
-        }
-
-        switch (outCurrency.value) {
-            case "USD":
-                result = product / usdRate;
-                break;
-            case "EUR":
-                result = product / eurRate;
-                break;
-            case "GBP":
-                result = product / gbpRate;
-                break;
-            default:
-                result = product;
-        }
-
+    const resultTextUpdate = (amount, inCurrency, result, outCurrency) => {
         outValue.innerText = `${amount} ${inCurrency.value} = ${result.toFixed(2)} ${outCurrency.value}`;
     }
 
-});
+    const currencyCheck = (inCurrency, outCurrency, amount) => {
+        if (inCurrency.value === outCurrency.value) {
+            outValue.innerText = "Waluta wejściowa i wyjściowa jest taka sama";
+        }
 
-formElement.addEventListener("reset", () => {
-    inCurrency.value = "PLN"
-    inValue.innerText = "";
-    outCurrency.value = "USD";
-    outValue.innerText = "";
-});
+        else {
+
+            const product = calculateToPLN(amount, inCurrency);
+            const result = calculateResult(product, outCurrency);
+            resultTextUpdate(amount, inCurrency, result, outCurrency);
+        }
+    }
+
+
+    const calculateToPLN = (amount, inCurrency) => {
+        switch (inCurrency.value) {
+            case "USD":
+                return amount * usdRate;
+
+            case "EUR":
+                return amount * eurRate;
+
+            case "GBP":
+                return amount * gbpRate;
+
+            default:
+                return amount;
+
+        }
+    }
+
+    const calculateResult = (product, outCurrency) => {
+        switch (outCurrency.value) {
+            case "USD":
+                return product / usdRate;
+
+            case "EUR":
+                return product / eurRate;
+
+            case "GBP":
+                return product / gbpRate;
+
+            default:
+                return product;
+        }
+    }
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        const amount = Number(inValue.value);
+        currencyCheck(inCurrency, outCurrency, amount);
+
+    };
+
+    const onFormReset = (event) => {
+        inCurrency.value = "PLN"
+        inValue.innerText = "";
+        outCurrency.value = "USD";
+        outValue.innerText = "";
+    }
+
+    const init = () => {
+
+        const formElement = document.querySelector(".js-form");
+        formElement.addEventListener("submit", onFormSubmit);
+        formElement.addEventListener("reset", onFormReset);
+    };
+
+    init();
+};
+
+
+
+
 
 
